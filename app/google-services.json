@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "356952120383",
+    "project_id": "wev-view-project",
+    "storage_bucket": "wev-view-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356952120383:android:45ce99831efda9d9d26c8a",
+        "android_client_info": {
+          "package_name": "com.template.webviewapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIjvl7kxMSiiQ8U4B-LMKbvhV8XuqnZFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

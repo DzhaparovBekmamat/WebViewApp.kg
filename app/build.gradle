@@ -1,0 +1,77 @@
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
+}
+
+android {
+    namespace 'com.template.webviewapplication'
+    compileSdk 34
+    defaultConfig {
+        applicationId "com.template.webviewapplication"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        setProperty("archivesBaseName", "$applicationId-$versionName")
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+// AndroidX Core KTX - Расширения Kotlin для AndroidX Core библиотеки, предоставляющие удобные расширения
+// и функции для работы с основными компонентами Android.
+    implementation("androidx.core:core-ktx:1.12.0")
+// AndroidX AppCompat - Поддержка современного дизайна на более старых устройствах с Android. Включает
+// набор инструментов для работы с пользовательским интерфейсом.
+    implementation("androidx.appcompat:appcompat:1.6.1")
+// Google Material Components - Реализация Material Design от Google для Android. Содержит готовые компоненты интерфейса и стилизацию.
+    implementation("com.google.android.material:material:1.10.0")
+// AndroidX Activity KTX - Расширения Kotlin для AndroidX Activity библиотеки, предоставляющие удобные
+// расширения и функции для работы с Activity.
+    implementation("androidx.activity:activity-ktx:1.8.1")
+// ConstraintLayout - Фреймворк разметки для Android, позволяющий создавать сложные макеты пользовательского интерфейса.
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+// JUnit - Фреймворк для тестирования Java-приложений. Используется для написания и запуска тестов.
+    testImplementation("junit:junit:4.13.2")
+// AndroidX Test - Инструменты тестирования для приложений AndroidX.
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+// Kotlin Coroutines для Android - Поддержка асинхронного программирования в Kotlin на платформе Android.
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+// AndroidX Lifecycle - Предоставляет компоненты жизненного цикла, такие как LiveData и ViewModel,
+// для управления жизненным циклом компонентов Android.
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+// AndroidX WebKit - Поддержка работы с веб-контентом в приложениях, используя компоненты AndroidX.
+    implementation("androidx.webkit:webkit:1.9.0")
+// Firebase BOM (Bill of Materials) - Плагин для управления зависимостями библиотек Firebase, предоставляет
+// общий механизм управления версиями.
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+// Firebase Analytics - Сбор, анализ и отчетность данных о поведении пользователей в приложении.
+    implementation("com.google.firebase:firebase-analytics")
+// Firebase Messaging - Реализация сервиса Firebase Cloud Messaging для отправки уведомлений на устройства.
+    implementation("com.google.firebase:firebase-messaging-ktx:23.3.1")
+// Firebase In-App Messaging Display - Возможность отображения сообщений внутри приложения для взаимодействия с пользователями.
+    implementation("com.google.firebase:firebase-inappmessaging-display")
+// Install Referrer - Библиотека, предоставляющая доступ к информации о реферере установки приложения.
+    implementation("com.android.installreferrer:installreferrer:2.2")
+}
