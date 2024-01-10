@@ -1,6 +1,5 @@
 package com.template.webviewapplication
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
@@ -8,18 +7,20 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.View
-import android.webkit.*
+import android.webkit.CookieManager
+import android.webkit.ValueCallback
+import android.webkit.WebChromeClient
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.getSystemService
 import com.android.installreferrer.api.InstallReferrerClient
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var referrerClient: InstallReferrerClient
     private var fileUploadCallback: ValueCallback<Array<Uri>>? = null
     private var telephonyCountryCode: String? = null
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -78,10 +81,6 @@ class MainActivity : AppCompatActivity() {
         webView.settings.allowFileAccess = true
         webView.settings.domStorageEnabled = true
         CookieManager.getInstance().setAcceptCookie(true)
-        (webView.webViewClient as WevViewClient).progressLoadingPage.observe(this) {
-            progressBar.progress = it
-            progressBar.visibility = if (it == 1 || it == 2) View.VISIBLE else View.INVISIBLE
-        }
         webView.webChromeClient = object : WebChromeClient() {
             override fun onShowFileChooser(
                 webView: WebView?,
@@ -122,17 +121,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-}/*
-7. **Получение данных:**
-   - `viewModel.getData(this, referrerClient) { ... }`: Вызывает методы в `MainViewModel`, чтобы
-   получить информацию о приложении из различных источников (реферер установки, идентификатор Firebase,
-    рекламный идентификатор и другие) и загружает URL в `WebView`.
-8. **Firebase:**
-   - `Firebase.messaging.subscribeToTopic("news")`: Подписка на тему уведомлений Firebase.
-9. **Обработка файлов:**
-   - Регистрация `ActivityResultLauncher` для обработки результатов выбора файла и настройка
-   `WebChromeClient` для загрузки файлов в `WebView`.
-11. **Другие методы:**
-   - `getTelephonySimCountyCode()`: Получение кода страны из `TelephonyManager`.
-   - `askNotificationPermission()`: Проверка и запрос разрешения на уведомления.
- */
+}

@@ -50,6 +50,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.8.1")
 // ConstraintLayout - Фреймворк разметки для Android, позволяющий создавать сложные макеты пользовательского интерфейса.
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation 'com.google.firebase:firebase-config:21.6.0'
 // JUnit - Фреймворк для тестирования Java-приложений. Используется для написания и запуска тестов.
     testImplementation("junit:junit:4.13.2")
 // AndroidX Test - Инструменты тестирования для приложений AndroidX.
